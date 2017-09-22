@@ -63,7 +63,8 @@
  <h3 class="blank1">Landlord | Add House</h3>
 						<div class="tab-content">
 						<div class="tab-pane active" id="horizontal-form">
-							<form class="form-horizontal" id="add_house_frm">
+                            <div id="add_house_status"></div>
+							<form class="form-horizontal" id="add_house_frm" action="<?=site_url('landlord_api/add_house');?>">
 								<div class="form-group">
 									<label for="focusedinput" class="col-sm-2 control-label">House Name</label>
 									<div class="col-sm-8">
@@ -111,12 +112,6 @@
                                         <option>Tudor</option>
 									</select></div>
 								</div>
-
-								<div class="form-group">
-									<label for="txtarea1" class="col-sm-2 control-label">Description</label>
-									<div class="col-sm-8"><textarea name="description" id="txtarea1" cols="50" rows="4" class="form-control1"></textarea></div>
-								</div>
-								
 								<div class="form-group">
 									<label for="mediuminput" class="col-sm-2 control-label">Rent Cost</label>
 									<div class="col-sm-8">
@@ -124,6 +119,16 @@
 									</div>
 								</div>
 
+								<div class="form-group">
+									<label for="txtarea1" class="col-sm-2 control-label">Description</label>
+									<div class="col-sm-8"><textarea name="description" id="txtarea1" cols="50" rows="70" class="form-control1"></textarea></div>
+								</div>
+								
+
+									<div class="col-sm-offset-2 col-sm-8">
+                                        <button type="submit" class="btn-success btn">Add House Now!!</button>
+									</div>                                
+                               
 							</form>
 						</div>
 					</div>
@@ -131,3 +136,40 @@
 <!--=======================================================================-->                
 			</div>
 		</div>
+
+<!--=======================================================================-->                
+<!-- Scripts for Registering the house -->
+<!--=======================================================================-->                
+<script type="text/javascript">
+$(function() {
+  
+$("#add_houuse_status").hide();
+
+  $("#add_house_frm").submit(function(evt){
+     evt.preventDefault();
+     
+     var url = $(this).attr('action');
+     var postData = $(this).serialize();
+
+     $.post(url, postData, function(responce){
+            $("#add_house_status").show(); 
+           if (responce.result==1) {
+               $("#add_house_status").html("House have been Added Successfully").css("color","green");
+               $("#add_house_frm")[0].reset(); 
+           }else{
+
+              var output = '<ul>'
+              for (var key in responce.error){
+                  var value = responce.error[key];
+                output+= '<li>'+ value+'</li>';
+              }   
+             output += '</ul>'            
+               $("#add_house_status").html(output).css("color","red"); 
+           }
+                           
+           
+     },'json')
+  })
+})
+
+</script>
