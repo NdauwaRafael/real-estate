@@ -15,20 +15,26 @@
 
 				<!--sidebar nav start-->
 					<ul class="nav nav-pills nav-stacked custom-nav">
-						<li><a href="<?=base_url()?>dashboard"><i class="lnr lnr-power-switch"></i><span>Dashboard</span></a></li>
-						<li><a href="<?=base_url()?>dashboard/bills"><i class="lnr lnr-cog"></i><span>Bills</span></a>
+						<li><a href="<?=base_url()?>landlord"><i class="lnr lnr-power-switch"></i><span>Landlord Dashboard</span></a></li>
+						<li><a href="<?=base_url()?>landlord/bills"><i class="lnr lnr-cog"></i><span>Bills</span></a></li>
 						<li class="menu-list">
-							<a href="#"><i class="lnr lnr-cog"></i>
+							<a href="#"><i class="fa fa-building-o"></i>
 								<span>Houses</span></a>
 								<ul class="sub-menu-list">
-									<li><a href="grids.html">Add House</a> </li>
-									<li><a href="widgets.html">View Houses</a></li>
+									<li><a href="<?=base_url()?>landlord/add_house">Add House</a> </li>
+									<li><a href="<?=base_url()?>landlord/view_house">View Houses</a></li>
 								</ul>
 						</li>
 				
-						</li>
+						
 
-						<li><a href="<?=base_url()?>dashboard/houses"><i class="lnr lnr-book"></i>  <span>Houses</span></a>
+						<li class="menu-list">
+							<a href="#"><i class="lnr lnr-indent-increase"></i>
+								<span>Tenants</span></a>
+								<ul class="sub-menu-list">
+									<li><a href="<?=base_url()?>landlord/add_tenants">Add Tenant</a> </li>
+									<li><a href="<?=base_url()?>landlord/view_tenants">View Tenants</a></li>
+								</ul>
 						</li>
 					</ul>
 				<!--sidebar nav end-->
