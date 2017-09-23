@@ -23,6 +23,22 @@ this.house = function(hse) {
 									</div>';
     return house_output;
 }
+
+//====================================================================================================
+this.view_estate = function(est) {
+    var estate_output = '<div>';
+    estate_output += '                   <div class="activity-row house_box">\
+										<div class="col-xs-3 activity-img"><img src="../assets/images/modern13.png" class="img-responsive" alt=""></div>\
+										<div class="col-xs-7 activity-desc">\
+											<h5><a href="#">'+est.name+'</a></h5>\
+											<p>'+est.category+'</p>\
+                                            <p><span class="glyphicon glyphicon-home"></span> '+est.location+' Estate</p>\
+										</div>\
+										<div class="col-xs-2 activity-desc1"><h6><butoon class="btn btn-sm btn-success">View</button></h6></div>\
+										<div class="clearfix"> </div>\
+									</div>';
+    return estate_output;
+}
 //====================================================================================================
 this.populate_estate = function(est) {
 	var list ='<option>';

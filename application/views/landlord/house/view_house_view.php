@@ -70,6 +70,19 @@
 								</div>
 							</div>
 						</div>     
-               
+
+
+                    <div class="col-md-6 grid_2 grid_2_bot">
+							<div class="activity_box ">
+								<h3>My Estates List</h3>
+								<div class="scrollbar scrollbar1" id="style-3">
+									<div id="estate_display"></div>
+
+								</div>
+							</div>
+						</div> 
+
+
+
 			</div>
 		</div>

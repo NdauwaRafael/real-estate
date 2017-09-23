@@ -37,11 +37,14 @@ var load_bills = function(){
 var load_estate = function(){
     $.get('../landlord_api/view_estate', function(estat){
          var option='';
+         var esto = '';
        for (var i = 0; i < estat.length; i++) {
            var element = estat[i];
            option +=Template.populate_estate(element);
+           esto += Template.view_estate(element);
        }  
-       $("#estate_list").append(option);       
+       $("#estate_list").append(option); 
+       $("#estate_display").html(esto);      
     },'json')
 }
 //====================================================================================================
