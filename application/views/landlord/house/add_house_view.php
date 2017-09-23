@@ -77,7 +77,7 @@
 									<label for="selector1" class="col-sm-2 control-label">House Cartegory</label>
 									<div class="col-sm-8">
                                         <select name="category" id="selector1" class="form-control1">
-										<option>........................[SELECT].................................</option>
+										<option value="">........................[SELECT].................................</option>
 										<option>Single Room</option>
 										<option>Double Room</option>
 										<option>Bed Sitter</option>
@@ -95,7 +95,7 @@
 									<label for="selector1" class="col-sm-2 control-label">House Location</label>
 									<div class="col-sm-8">
                                         <select name="location" id="selector1" class="form-control1">
-										<option>................CHAGUA HAPA(SELECT HERE)......................</option>
+										<option value="">................CHAGUA HAPA(SELECT HERE)......................</option>
 										<option>Bamburi</option>
                                         <option>Bombolulu</option>
                                         <option>Changamwe</option>
@@ -140,36 +140,3 @@
 <!--=======================================================================-->                
 <!-- Scripts for Registering the house -->
 <!--=======================================================================-->                
-<script type="text/javascript">
-$(function() {
-  
-$("#add_houuse_status").hide();
-
-  $("#add_house_frm").submit(function(evt){
-     evt.preventDefault();
-     
-     var url = $(this).attr('action');
-     var postData = $(this).serialize();
-
-     $.post(url, postData, function(responce){
-            $("#add_house_status").show(); 
-           if (responce.result==1) {
-               $("#add_house_status").html("House have been Added Successfully").css("color","green");
-               $("#add_house_frm")[0].reset(); 
-           }else{
-
-              var output = '<ul>'
-              for (var key in responce.error){
-                  var value = responce.error[key];
-                output+= '<li>'+ value+'</li>';
-              }   
-             output += '</ul>'            
-               $("#add_house_status").html(output).css("color","red"); 
-           }
-                           
-           
-     },'json')
-  })
-})
-
-</script>

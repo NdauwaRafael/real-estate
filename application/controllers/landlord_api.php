@@ -10,7 +10,7 @@ public function add_house(){
 
         $this->form_validation->set_rules('name', 'House Name', 'required|min_length[3]|max_length[46]|is_unique[house.name]');
         $this->form_validation->set_rules('category', 'House Category', 'required|min_length[3]|max_length[260]');
-        $this->form_validation->set_rules('location', 'House Location', 'required|min_length[3]|max_length[260]');
+        $this->form_validation->set_rules('estate', 'House Location', 'required|min_length[3]|max_length[260]');
         $this->form_validation->set_rules('description', 'Description', 'required|min_length[6]|max_length[1200]');
         $this->form_validation->set_rules('rent', 'House Rent', 'required|is_Natural');
 
@@ -24,14 +24,14 @@ public function add_house(){
             
         $name= $this->input->post('name');
         $category= $this->input->post('category');
-        $location= $this->input->post('location');
+        $location= $this->input->post('estate');
         $description= $this->input->post('description');
         $rent= $this->input->post('rent');
 
         $result = $this->landlord_model->add_house([
                 'name'=>$name,
                 'category'=>$category,
-                'location'=>$location,
+                'estate'=>$location,
                 'description'=>$description,
                 'cost'=>$rent,
                 'landlord_email'=>'email',
@@ -51,7 +51,20 @@ public function add_house(){
 
 }   
 
+//===============================================================================================
+public function view_house($house_id=null){
+    if ($house_id != null) {
+        $this->db->where(['house_id'=>$house_id]);
+    }
+$query = $this->db->get('house');
+$house_response = $query->result_array();
+
+$this->output->set_output(json_encode($house_response));
+
+}  
+//===============================================================================================
+ 
 }
 
 
-?>
+?> 

@@ -32,6 +32,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</script>
 <script src="<?=base_url()?>assets/js/jquery-1.10.2.min.js"></script>
 <!-- Placed js at the end of the document so the pages load faster -->
+
+<!-- JS For application control -->
+<script src="<?=base_url()?>assets/js/landlord/result.js"></script>
+<script src="<?=base_url()?>assets/js/landlord/events.js"></script>
+<script src="<?=base_url()?>assets/js/landlord/template.js"></script>
+<script src="<?=base_url()?>assets/js/landlord/landlord.js"></script>
+
+<script>
+$(function(){
+    var landlord = new Landlord();
+})
+
+</script>
 </head>
 
  <body class="sticky-header left-side-collapsed"  onload="initMap()">

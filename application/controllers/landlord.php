@@ -60,7 +60,7 @@ public function view_house(){
 
            $this->load->view('landlord/inc/header_view');
            $this->load->view('landlord/inc/side_view');
-           $this->load->view('landlord/house/add_house_view');
+           $this->load->view('landlord/house/view_house_view');
            $this->load->view('landlord/inc/footer_view'); 
 }
 //===============================================================================================

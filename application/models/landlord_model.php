@@ -8,5 +8,9 @@ class Landlord_model extends CI_model
       return $this->db->insert_id();
 
  }
+
+ public function view_house(){
+
+ }
 }
 ?>
