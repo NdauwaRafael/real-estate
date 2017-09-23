@@ -24,14 +24,14 @@ public function add_house(){
             
         $name= $this->input->post('name');
         $category= $this->input->post('category');
-        $location= $this->input->post('estate');
+        $estate= $this->input->post('estate');
         $description= $this->input->post('description');
         $rent= $this->input->post('rent');
 
         $result = $this->landlord_model->add_house([
                 'name'=>$name,
                 'category'=>$category,
-                'estate'=>$location,
+                'estate'=>$estate,
                 'description'=>$description,
                 'cost'=>$rent,
                 'landlord_email'=>'email',
@@ -64,6 +64,71 @@ $this->output->set_output(json_encode($house_response));
 }  
 //===============================================================================================
  
+
+//===============================================================================================
+
+ public function add_estate(){
+
+
+  $this->load->model('landlord_model');
+        $this->output->set_content_type('application_json');
+
+        $this->form_validation->set_rules('name', 'Estate Name', 'required|min_length[3]|max_length[46]|is_unique[estate.name]');
+        $this->form_validation->set_rules('category', 'Category', 'required|min_length[3]|max_length[260]');
+        $this->form_validation->set_rules('location', 'Estate Location', 'required|min_length[3]|max_length[260]');
+        $this->form_validation->set_rules('description', 'Description', 'required|min_length[6]|max_length[1200]');
+        $this->form_validation->set_rules('unit', 'Number of units', 'required|is_Natural');
+
+
+		if ($this->form_validation->run() == FALSE)
+		{
+            
+			$this->output->set_output(json_encode(['result'=>0, 'error'=>$this->form_validation->error_array() ]));
+            return false;
+		}else {
+            
+        $name= $this->input->post('name');
+        $category= $this->input->post('category');
+        $location= $this->input->post('location');
+        $description= $this->input->post('description');
+        $unit= $this->input->post('unit');
+
+        $result = $this->landlord_model->add_estate([
+                'name'=>$name,
+                'category'=>$category,
+                'location'=>$location,
+                'description'=>$description,
+                'units'=>$unit,
+                'owner'=>'email'
+            ]);        
+
+       if ($result) {
+            $this->output->set_output(json_encode(['result'=>1]));
+            return false;
+       }
+
+        $this->output->set_output(json_encode(['result'=>0, 'error'=>'Estate Not Created']));
+            
+
+
+        }
+ }
+//===============================================================================================
+public function view_estate($estate_id=null){
+    if ($estate_id != null) {
+        $this->db->where(['estate_id'=>$estate_id]);
+    }
+$query = $this->db->get('estate');
+$estate_response = $query->result_array();
+
+$this->output->set_output(json_encode($estate_response));
+
+}  
+//===============================================================================================
+ 
+
+
+
 }
 
 

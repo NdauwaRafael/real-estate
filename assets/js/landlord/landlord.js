@@ -10,6 +10,7 @@ this.__construct = function() {
     Events = new Events();
 Result = new Result();
 load_house();
+load_estate();
 }   
 
 //====================================================================================================
@@ -33,6 +34,16 @@ var load_bills = function(){
 }
 //====================================================================================================
 
+var load_estate = function(){
+    $.get('../landlord_api/view_estate', function(estat){
+         var option='';
+       for (var i = 0; i < estat.length; i++) {
+           var element = estat[i];
+           option +=Template.populate_estate(element);
+       }  
+       $("#estate_list").append(option);       
+    },'json')
+}
 //====================================================================================================
 this.__construct();
 }

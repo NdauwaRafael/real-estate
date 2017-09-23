@@ -25,5 +25,23 @@ this.error = function(responce){
 
 
 //====================================================================================================
+
+//====================================================================================================
+this.estate_success = function(){
+$("#add_estate_status").html("Estate have been Added Successfully").css("color","green");
+}
+//====================================================================================================
+this.estate_error = function(responce){
+              var output = '<ul>'
+              for (var key in responce.error){
+                  var value = responce.error[key];
+                output+= '<li>'+ value+'</li>';
+              }   
+             output += '</ul>'            
+               $("#add_estate_status").html(output).css("color","red");     
+}
+
+
+//====================================================================================================
 this.__construct();
 }
